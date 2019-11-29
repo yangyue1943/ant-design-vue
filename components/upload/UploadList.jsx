@@ -58,6 +58,7 @@ export default {
     },
     showRemoveIcon: true,
     showPreviewIcon: true,
+    errorInfoDefaultVisible:false
   }),
   inject: {
     configProvider: { default: () => ConfigConsumerProps },
@@ -199,7 +200,7 @@ export default {
         <a
           href={file.url || file.thumbUrl}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer" 
           style={style}
           onClick={e => this.handlePreview(file, e)}
           title={locale.previewFile}
@@ -238,7 +239,7 @@ export default {
       }
       const iconAndPreview =
         file.status === 'error' ? (
-          <Tooltip title={message}>
+          <Tooltip defaultVisible={errorInfoDefaultVisible} title={message}>
             {icon}
             {preview}
           </Tooltip>
